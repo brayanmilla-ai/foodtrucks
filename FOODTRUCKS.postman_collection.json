@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "9445f125-3fd7-4301-96a5-ff6945380036",
+		"name": "FOODTRUCKS",
+		"description": "API de la app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "restaurantes",
+			"item": [
+				{
+					"name": "{{HOST}}api/restaurantes/ordenes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/ordenes",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"ordenes"
+							]
+						},
+						"description": "Recibe todas las ordenes"
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/aceptar-orden/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/aceptar-orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"aceptar-orden",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "7ad75cd9-b1c1-4941-aa68-361a4fd46d66",
+									"key": "id",
+									"value": "5",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Aceptar Orden"
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/orden/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"orden",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/marcar-orden-listo/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/marcar-orden-listo/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"marcar-orden-listo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/cancelar-orden/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/cancelar-orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"cancelar-orden",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/items",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/items/nuevo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "nombre ",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/items/nuevo",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"items",
+								"nuevo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/items/editar/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "imagen",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/items/editar/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"items",
+								"editar",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/restaurantes/items/eliminar/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/restaurantes/items/eliminar/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"restaurantes",
+								"items",
+								"eliminar",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Seccion de restaurantes",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "sec",
+			"item": [
+				{
+					"name": "{{HOST}}api/sec/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@demo.com",
+									"type": "text"
+								},
+								{
+									"key": "psswd",
+									"value": "1234",
+									"type": "text"
+								}
+							],
+							"options": {
+								"urlencoded": {}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/login",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"sec",
+								"login"
+							]
+						},
+						"description": "Logon"
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api//sec/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@demo.com",
+									"type": "text"
+								},
+								{
+									"key": "pswd",
+									"value": "1010",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/signin",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"",
+								"sec",
+								"signin"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/sec/delivery/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@demo.com",
+									"type": "text"
+								},
+								{
+									"key": "pswd",
+									"value": "1010",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/delivery/login",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"sec",
+								"delivery",
+								"login"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/sec/delivery/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@nodemon.com",
+									"type": "text"
+								},
+								{
+									"key": "pswd",
+									"value": "1010",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/delivery/signin",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"sec",
+								"delivery",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/sec/restaurante/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@demo.com",
+									"type": "text"
+								},
+								{
+									"key": "pswd",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/restaurante/signin",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"sec",
+								"restaurante",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/sec/restaurante/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@demo.com",
+									"type": "text"
+								},
+								{
+									"key": "pswd",
+									"value": "1010",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/sec/restaurante/login",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"sec",
+								"restaurante",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Seccion de seguridad",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "delivery",
+			"item": [
+				{
+					"name": "{{HOST}}api/delivery/pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/delivery/pedidos",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"delivery",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/delivery/pedido/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/delivery/pedido/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"delivery",
+								"pedido",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/delivery/pedido/:id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "Decision [S] [N]",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}api/delivery/pedido/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"delivery",
+								"pedido",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/delivery/pedido/recoger-orden/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/delivery/pedido/recoger-orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"delivery",
+								"pedido",
+								"recoger-orden",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/delivery/pedido/entregar-orden/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/delivery/pedido/entregar-orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"delivery",
+								"pedido",
+								"entregar-orden",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Seccion de repartidor",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "{{HOST}}api/cliente/:idRest/items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/:idRest/items",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								":idRest",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "idRest",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/cliente/:idRest/item/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/:idRest/item/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								":idRest",
+								"item",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "idRest",
+									"value": "10"
+								},
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/cliente/agregar-item/:itemId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/agregar-item/:itemId",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								"agregar-item",
+								":itemId"
+							],
+							"variable": [
+								{
+									"key": "itemId",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/cliente/elimintar-item/:itemId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/elimintar-item/:itemId",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								"elimintar-item",
+								":itemId"
+							],
+							"variable": [
+								{
+									"key": "itemId",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/cliente/ordenes/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/ordenes/all",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								"ordenes",
+								"all"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api/cliente/ordenes/user/orden/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api/cliente/ordenes/user/orden/:id",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"cliente",
+								"ordenes",
+								"user",
+								"orden",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOST}}api//cliente/restaurantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}api//cliente/restaurantes",
+							"host": [
+								"{{HOST}}api"
+							],
+							"path": [
+								"",
+								"cliente",
+								"restaurantes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Seccion de clientes",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
