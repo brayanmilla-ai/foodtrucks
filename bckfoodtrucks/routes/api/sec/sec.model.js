@@ -37,7 +37,7 @@ module.exports = class {
         lastpasswordchanged: null,
         passwordexpires: new Date().getTime() + 1000 * 60 * 60 * 24 * 90,
         oldpasswords: [],
-        roles: rol,
+        roles: [rol],
       };
       let rslt = await userColl.insertOne(newUser);
       return rslt;

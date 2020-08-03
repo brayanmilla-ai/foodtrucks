@@ -23,15 +23,19 @@ passport.use(
 
 var secRoutes = require("./sec");
 var deliveryRoutes = require("./delivery");
-var restaurantesRoutes = require("./restaurantes");
+var {
+  restaurantesRoutesPub,
+  restaurantesRoutesPriv,
+} = require("./restaurantes");
 var clienteRoutes = require("./cliente");
 
 //publicas
 router.use("/sec", secRoutes);
-router.use("/restaurantes", restaurantesRoutes);
+router.use("/restaurantes", restaurantesRoutesPub);
 
 const jwtAuthMiddleware = passport.authenticate("jwt", { session: false });
 //privadas
+router.use("/restaurantes", jwtAuthMiddleware, restaurantesRoutesPriv);
 router.use("/delivery", jwtAuthMiddleware, deliveryRoutes);
 router.use("/cliente", jwtAuthMiddleware, clienteRoutes);
 
