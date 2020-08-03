@@ -18,6 +18,9 @@ import SignIn from "./Components/Content/SignIn";
 import Delivery from "./Components/Content/Delivery";
 import Cliente from "./Components/Content/Cliente";
 import Repartidor from "./Components/Content/Repartidor";
+import carrito from "./Components/Content/Cliente/carrito";
+import ordenes from "./Components/Content/Cliente/ordenes";
+import pedido from "./Components/Content/Cliente/pedidos";
 
 export default class extends Component {
   constructor() {
@@ -45,13 +48,13 @@ export default class extends Component {
     this.setState(
       {
         ...this.state,
-        user: user,
+        user: JSON.stringify(user),
         jwt: jwt,
         isLogged: true,
       },
       () => {
         setLocalStorage("jwt", jwt);
-        setLocalStorage("user", user);
+        setLocalStorage("user", JSON.stringify(user));
         setJWT(jwt);
       }
     );
@@ -96,6 +99,9 @@ export default class extends Component {
           <NRoute path="/signin" component={SignIn} exact auth={auth} />
           <NRoute path="/delivery" component={Delivery} exact auth={auth} />
           <NRoute path="/cliente" component={Cliente} exact auth={auth} />
+          <NRoute path="/carrito" component={carrito} exact auth={auth} />
+          <NRoute path="/pedidos" component={pedido} exact auth={auth} />
+          <NRoute path="/ordenes" component={ordenes} exact auth={auth} />
           <NRoute path="/repartidor" component={Repartidor} exact auth={auth} />
         </Switch>
       </Router>

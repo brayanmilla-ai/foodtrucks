@@ -1,10 +1,10 @@
 import { paxios } from "../../../utilities/axios";
 
-export const login = async (email, pswd) => {
+export const register = async (email, pswd) => {
   try {
-    const { data } = await paxios.post("/api/sec/login", {
+    const { data } = await paxios.post("/api/sec/signin", {
       email: email,
-      pswd: pswd,
+      password: pswd,
     });
     return data;
   } catch (e) {

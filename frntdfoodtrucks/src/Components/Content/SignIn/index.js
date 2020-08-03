@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Page from "../../Page";
+import { register } from "./actions";
 export default class extends Component {
   constructor() {
     super();
@@ -15,12 +16,26 @@ export default class extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-  onClickButton(e) {
-    alert(JSON.stringify(this.state));
+  async onClickButton(e) {
+    try {
+      if (this.state.email != "" || this.state.password != "") {
+        let userData = await register(this.state.email, this.state.password);
+      } else {
+        alert("No se permite campos vacios");
+      }
+      this.setState({ redirectTo: true }, () => {});
+    } catch (e) {
+      alert("Error al crear el usuario.");
+    }
   }
   render() {
     return (
-      <Page showHeader={true} showFooter={true} title={"Registrarse"}>
+      <Page
+        showHeader={true}
+        showFooter={true}
+        title={"Registrarse"}
+        auth={this.props.auth}
+      >
         <h2></h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo

@@ -3,31 +3,86 @@ import "./footer.css";
 import { NavLink } from "react-router-dom";
 
 import { MdHome } from "react-icons/md";
-import { FaUserPlus, FaAngellist, FaUser } from "react-icons/fa";
+import { FaUserPlus, FaAngellist, FaUser, FaFirstOrder } from "react-icons/fa";
+import { getLocalStorage } from "../../utilities/axios";
 
 export default ({ auth }) => {
-  console.log(auth);
-  console.log(auth);
+  var jsondata = JSON.parse(localStorage.getItem("user"));
+  var k = JSON.parse(jsondata);
+
   if (auth.isLogged && true) {
-    return (
-      <footer>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">
-                <MdHome size="2em" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/votes">Votos</NavLink>
-            </li>
-            <li>
-              <NavLink to="/alumnos">Alms</NavLink>
-            </li>
-          </ul>
-        </nav>
-      </footer>
-    );
+    if (k.roles.includes("cliente")) {
+      return (
+        <footer>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/">
+                  <MdHome size="2em" />
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/ordenes">Ordenes</NavLink>
+              </li>
+              <li>
+                <NavLink to="/carrito">Carrito</NavLink>
+              </li>
+              <li>
+                <NavLink to="/pedidos">Pedidos</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+      );
+    }
+    if (k.roles.includes("delivery")) {
+      return (
+        <footer>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/">
+                  <MdHome size="2em" />
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/ordenes">Pedidos</NavLink>
+              </li>
+              <li>
+                <NavLink to="/carrito">Aceptados</NavLink>
+              </li>
+              <li>
+                <NavLink to="/pedidos">Entregados</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+      );
+    }
+    if (k.roles.includes("restaurante")) {
+      return (
+        <footer>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/">
+                  <MdHome size="2em" />
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/ordenes">Productos</NavLink>
+              </li>
+              <li>
+                <NavLink to="/carrito">Items</NavLink>
+              </li>
+              <li>
+                <NavLink to="/pedidos">Ordenes</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+      );
+    }
   } else {
     return (
       <footer>
