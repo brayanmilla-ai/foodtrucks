@@ -11,28 +11,6 @@ export default ({ auth }) => {
   k = JSON.parse(k);
   if (k) {
     if (auth.isLogged && true) {
-      /*       return (
-        <footer>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">
-                  <MdHome size="2em" />
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/ordenes">Ordenes</NavLink>
-              </li>
-              <li>
-                <NavLink to="/carrito">Carrito</NavLink>
-              </li>
-              <li>
-                <NavLink to="/pedidos">Pedidos</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </footer>
-      ); */
       if (k.roles.includes("cliente")) {
         return (
           <footer>
@@ -92,13 +70,7 @@ export default ({ auth }) => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/ordenes">Productos</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/carrito">Items</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/pedidos">Ordenes</NavLink>
+                  <NavLink to="/ordenes">Ordenes</NavLink>
                 </li>
               </ul>
             </nav>

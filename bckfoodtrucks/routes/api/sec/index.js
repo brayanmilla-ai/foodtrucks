@@ -15,19 +15,23 @@ router.post("/login", async (req, res) => {
     var { email, pswd } = req.body;
     //Hacer validaciones aqui
     var user = await secModel.getByEmail(email);
-    if (await secModel.comparePassword(pswd, user.password)) {
-      const { email, roles, _id } = user;
-      const jUser = { email, roles, _id };
-      console.log(jUser);
-      let token = jwt.sign(jUser, process.env.JWT_SECRET, {
-        expiresIn: "120m",
-      });
-      res.status(200).json({
-        ...jUser,
-        jwt: token,
-      });
+    if (user) {
+      if (await secModel.comparePassword(pswd, user.password)) {
+        const { email, roles, _id } = user;
+        const jUser = { email, roles, _id };
+        console.log(jUser);
+        let token = jwt.sign(jUser, process.env.JWT_SECRET, {
+          expiresIn: "120m",
+        });
+        res.status(200).json({
+          ...jUser,
+          jwt: token,
+        });
+      } else {
+        res.status(204).json({ error: "Credenciales Incorrectas" });
+      }
     } else {
-      res.status(401).json({ error: "Credenciales Incorrectas" });
+      res.status(204).json({ error: "No esta registrado" });
     }
   } catch (err) {
     res.status(500).json({ error: "Algo Sucendió mal!!" });

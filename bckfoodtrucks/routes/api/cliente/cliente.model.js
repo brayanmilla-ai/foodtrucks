@@ -279,32 +279,6 @@ module.exports = class {
     }
   }
 
-  /* static async getByCuenta(cuenta) {
-    try {
-      let filter = { cuenta: cuenta };
-      const result = await restaurantes.findOne(filter);
-      return result;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  } //get by Cuenta
- */
-  /* static async like(id) {
-    try {
-      let filter = { _id: new ObjectId(id) };
-      let update = {
-        $inc: { like: 1 },
-        $set: { last_modified: new Date().getTime() },
-      };
-      const result = await restaurantes.updateOne(filter, update);
-      return result;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  }*/
-
   static async updateItem(id, data, idres, urlimg) {
     try {
       let filter = { _id: new ObjectId(id) };

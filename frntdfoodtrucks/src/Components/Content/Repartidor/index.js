@@ -1,37 +1,57 @@
 import React, { Component } from "react";
 import Page from "../../Page";
+import { getLocalStorage } from "../../../utilities/axios";
+import { ListGroup } from "react-bootstrap";
+import { obtenerOrdenes } from "./actions";
+import { NavLink } from "react-router-dom";
 
+import { FaEdit, FaTrash, FaInfoCircle } from "react-icons/fa";
 import { getMocion, getPrivateMocion } from "./actions";
 export default class extends Component {
   constructor() {
     super();
-    this.state = {
-      click: 0,
-    };
-
-    this.onClickButton = this.onClickButton.bind(this);
+    var k = JSON.parse(getLocalStorage("user"));
+    k = JSON.parse(k);
+    if (k) {
+      if (k.roles.includes("restaurante")) {
+        this.state = {
+          ordenes: [],
+          loading: true,
+        };
+      }
+    }
   }
-  onClickButton(e) {
-    this.setState({ click: this.state.click + 1 });
+  async componentDidMount() {
+    try {
+      let ordenes = await obtenerOrdenes();
+      this.setState({ ...this.state, ordenes: ordenes });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
+    const OrdenesListItem = this.state.ordenes.map((o) => {
+      return (
+        <ListGroup key={o._id}>
+          <ListGroup.Item>
+            {o.nombre}{" "}
+            <NavLink to={`/productos/${o._id}`}>
+              <FaInfoCircle size="35px" />
+            </NavLink>
+          </ListGroup.Item>
+        </ListGroup>
+      );
+    });
+
     return (
       <Page
         showHeader={true}
         showFooter={true}
-        title={"Landing Page"}
+        title={"Ordenes"}
         auth={this.props.auth}
       >
-        <h2></h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo
-          accusamus, similique sequi saepe cum quas labore, fugit repellat
-          assumenda delectus in suscipit harum quisquam accusantium impedit ipsa
-          ut. Dignissimos.
-        </p>
-        <p>Clicks: {this.state.click}</p>
-        <button onClick={this.onClickButton}>Sign In</button>
+        {OrdenesListItem}
       </Page>
     );
   }

@@ -24,15 +24,19 @@ export default class extends Component {
   async onClickButton(e) {
     try {
       let userData = await login(this.state.email, this.state.pswd);
-      const { jwt } = userData;
-      delete userData.jwt;
-      let data = JSON.stringify(userData);
-      this.setState({ redirectTo: true }, () => {
-        if (!getLocalStorage("user")) {
-          setLocalStorage("user", JSON.stringify(data));
-        }
-        this.props.auth.login(data, jwt);
-      });
+      if (userData) {
+        const { jwt } = userData;
+        delete userData.jwt;
+        let data = JSON.stringify(userData);
+        this.setState({ redirectTo: true }, () => {
+          if (!getLocalStorage("user")) {
+            setLocalStorage("user", JSON.stringify(data));
+          }
+          this.props.auth.login(data, jwt);
+        });
+      } else {
+        alert("No esta registrado");
+      }
     } catch (e) {
       alert("Error al iniciar sesión.");
     }
