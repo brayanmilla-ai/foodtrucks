@@ -4,9 +4,9 @@ Sistema de Delivery para la entrega de comida de restaurantes a domicilio
 
 # Integrantes
 
-Brayan Josué Milla     0502199801005
-Byron Humberto Bueso   0401199700096
-Ariel Torres
+-- Brayan Josué Milla     0502199801005
+-- Byron Humberto Bueso   0401199700096
+-- Ariel Torres           0501199707740
 
 ## Requisitos
 
