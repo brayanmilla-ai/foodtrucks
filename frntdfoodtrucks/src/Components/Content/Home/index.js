@@ -3,7 +3,7 @@ import Page from "../../Page";
 import "./home.css";
 import { getLocalStorage } from "../../../utilities/axios";
 import { ListGroup } from "react-bootstrap";
-import { obtenerRestaurantes } from "./actions";
+import { obtenerRestaurantes, obtenerRestaurantesClientes } from "./actions";
 import { NavLink } from "react-router-dom";
 
 import { FaEdit, FaTrash, FaInfoCircle } from "react-icons/fa";
@@ -35,6 +35,16 @@ export default class extends Component {
           console.log(e);
         }
       }
+
+      if (k.roles.includes("cliente") && getLocalStorage("jwt")) {
+        try {
+          let restaurantes = await obtenerRestaurantesClientes();
+          console.log(restaurantes);
+          this.setState({ ...this.state, restaurantes: restaurantes });
+        } catch (e) {
+          console.log(e);
+        }
+      }
     }
   }
 
@@ -48,7 +58,7 @@ export default class extends Component {
             <ListGroup key={o._id}>
               <ListGroup.Item>
                 {o.nombre}{" "}
-                <NavLink to={`/productos/${o._id}`}>
+                <NavLink to={`/${o._id}/items`}>
                   <FaInfoCircle size="35px" />
                 </NavLink>
               </ListGroup.Item>
@@ -65,7 +75,30 @@ export default class extends Component {
             {RestaurantesListItem}
           </Page>
         );
-      } else {
+      } /* else if (k.roles.includes("cliente")) {
+        const RestaurantesListItem = this.state.restaurantes.map((o) => {
+          return (
+            <ListGroup key={o._id}>
+              <ListGroup.Item>
+                {o.nombre}{" "}
+                <NavLink to={`/${o._id}/items`}>
+                  <FaInfoCircle size="35px" />
+                </NavLink>
+              </ListGroup.Item>
+            </ListGroup>
+          );
+        });
+        return (
+          <Page
+            showHeader={true}
+            showFooter={true}
+            title={"Landing Page"}
+            auth={this.props.auth}
+          >
+            {RestaurantesListItem}
+          </Page>
+        );
+      }  */ else {
         return (
           <Page
             showHeader={true}

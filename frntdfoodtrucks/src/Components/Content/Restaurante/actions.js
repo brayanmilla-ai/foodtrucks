@@ -10,7 +10,7 @@ export const obtenerOrdenes = async () => {
 };
 
 export const aceptarOrden = async (id, tipo) => {
-  if (tipo === 1) {
+  if (tipo == 1) {
     let url = "/api/restaurantes/aceptar-orden/" + id;
     console.log(url);
     try {
@@ -20,7 +20,7 @@ export const aceptarOrden = async (id, tipo) => {
     } catch (e) {
       throw e;
     }
-  } else if (tipo === 2) {
+  } else if (tipo == 2) {
     let url = "/api/restaurantes/marcar-orden-listo/" + id;
     console.log(url);
     try {

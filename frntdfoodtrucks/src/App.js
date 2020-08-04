@@ -22,6 +22,7 @@ import Repartidor from "./Components/Content/Repartidor";
 import carrito from "./Components/Content/Cliente/carrito";
 import ordenes from "./Components/Content/Restaurante";
 import pedido from "./Components/Content/Cliente/pedidos";
+import productos from "./Components/Content/Restaurante/Items";
 
 export default class extends Component {
   constructor() {
@@ -106,6 +107,7 @@ export default class extends Component {
           <PRoute path="/carrito" component={carrito} exact auth={auth} />
           <PRoute path="/pedidos" component={pedido} exact auth={auth} />
           <PRoute path="/ordenes" component={ordenes} exact auth={auth} />
+          <PRoute path="/:id/items" component={productos} exact auth={auth} />
           <PRoute path="/repartidor" component={Repartidor} exact auth={auth} />
         </Switch>
       </Router>

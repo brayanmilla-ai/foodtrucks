@@ -9,3 +9,13 @@ export const obtenerRestaurantes = async () => {
     throw e;
   }
 };
+
+export const obtenerRestaurantesClientes = async () => {
+  try {
+    let { data } = await paxios.get("/api/cliente/restaurantes");
+    console.log(data);
+    return data;
+  } catch (e) {
+    throw e;
+  }
+};

@@ -39,7 +39,6 @@ export default class extends Component {
 
   async onClickButton(e) {
     const { name, value } = e.target;
-
     try {
       let estado = await aceptarOrden(value, name);
       this.setState({ redirectTo: true }, () => {});

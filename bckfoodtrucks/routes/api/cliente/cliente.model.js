@@ -176,9 +176,11 @@ module.exports = class {
 
       let filter = { userid: user };
       const dataCarrito = await carrito.find(filter).toArray();
+      let idRes = "";
       for (let index = 0; index < dataCarrito.length; index++) {
         const element = dataCarrito[index];
         let filter = { _id: ObjectId(dataCarrito[index].itemId) };
+
         var item = await itemsRestaurantes.findOne(filter);
         totalOrden += dataCarrito[index].cantidad * item.precio;
         console.log(dataCarrito[index].cantidad + "*" + item.precio);
