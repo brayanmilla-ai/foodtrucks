@@ -1,6 +1,7 @@
 const db = require("../../dao/db");
 const ObjectId = require("mongodb").ObjectId;
 const bcrypt = require("bcrypt");
+const { json } = require("express");
 
 let userColl;
 
@@ -29,21 +30,27 @@ module.exports = class {
       rol = "restaurante";
     }
     const { email, password } = data;
-    try {
-      let newUser = {
-        email: email,
-        password: bcrypt.hashSync(password, 10),
-        lastlogin: null,
-        lastpasswordchanged: null,
-        passwordexpires: new Date().getTime() + 1000 * 60 * 60 * 24 * 90,
-        oldpasswords: [],
-        roles: [rol],
-      };
-      let rslt = await userColl.insertOne(newUser);
-      return rslt;
-    } catch (err) {
-      console.log(err);
-      return err;
+    let filter = { email: email };
+    let user = await userColl.findOne(filter);
+    if (!user) {
+      try {
+        let newUser = {
+          email: email,
+          password: bcrypt.hashSync(password, 10),
+          lastlogin: null,
+          lastpasswordchanged: null,
+          passwordexpires: new Date().getTime() + 1000 * 60 * 60 * 24 * 90,
+          oldpasswords: [],
+          roles: [rol],
+        };
+        let rslt = await userColl.insertOne(newUser);
+        return 1;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
+    } else {
+      return 0;
     }
   } // addnew
 

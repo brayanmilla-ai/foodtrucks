@@ -1,15 +1,54 @@
 header {
   display: flex;
-  background-color: #455A64;
+  background-color: #7e3326;
   color: #FFF;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 1px 3px #333;
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:100vw;
+  position: inherit;
+  height: 80px;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
 }
+
 header h1 {
   font-size: 1.2em;
+}
+
+.col-0 {
+  width: 65%;
+}
+
+.col-1 {
+  width: 15%;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+}
+
+.btn-salir {
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Page from "../../Page";
 import { Redirect } from "react-router-dom";
-
+import "./login.css";
 import { login } from "./actions";
+import { setLocalStorage, getLocalStorage } from "../../../utilities/axios";
 
 export default class extends Component {
   constructor() {
@@ -25,8 +26,12 @@ export default class extends Component {
       let userData = await login(this.state.email, this.state.pswd);
       const { jwt } = userData;
       delete userData.jwt;
+      let data = JSON.stringify(userData);
       this.setState({ redirectTo: true }, () => {
-        this.props.auth.login(JSON.stringify(userData), jwt);
+        if (!getLocalStorage("user")) {
+          setLocalStorage("user", JSON.stringify(data));
+        }
+        this.props.auth.login(data, jwt);
       });
     } catch (e) {
       alert("Error al iniciar sesión.");
@@ -46,26 +51,40 @@ export default class extends Component {
         title={"Iniciar Sesión"}
         auth={this.props.auth}
       >
-        <h2>Iniciar Sesión</h2>
-        <fieldset>
-          <label>Correo Electrónico</label>
-          <input
-            type="email"
-            name="email"
-            onChange={this.onTextChange}
-            value={this.state.email}
-          />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <input
-            type="password"
-            name="pswd"
-            onChange={this.onTextChange}
-            value={this.state.pswd}
-          />
-        </fieldset>
-        <button onClick={this.onClickButton}>Iniciar Sesión</button>
+        <div className="loginform">
+          <h3 className="text-center">Iniciar Sesión</h3>
+
+          <div className="form-group">
+            <label>Correo Electrónico</label>
+            <input
+              type="email"
+              name="email"
+              onChange={this.onTextChange}
+              className="form-control"
+              value={this.state.email}
+              placeholder="Ingrese el correo electronico"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="pswd"
+              onChange={this.onTextChange}
+              value={this.state.pswd}
+              className="form-control"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <button
+            onClick={this.onClickButton}
+            className="btn btn-primary btn-block"
+          >
+            Iniciar
+          </button>
+        </div>
       </Page>
     );
   }

@@ -37,8 +37,11 @@ router.post("/login", async (req, res) => {
 router.post("/signin", async (req, res) => {
   try {
     var rslt = await secModel.addnew(req.body, "cliente");
-    console.log(rslt);
-    res.status(200).json({ msg: "Usuario Creado" });
+    if (rslt == 1) {
+      res.status(201).json({ msg: "Usuario Creado" });
+    } else {
+      res.status(204).json({ msg: "El correo electronico ya esta en uso" });
+    }
   } catch (err) {
     res.status(500).json({ error: "Algo Sucendió mal!!" });
   }
@@ -71,8 +74,11 @@ router.post("/delivery/login", async (req, res) => {
 router.post("/delivery/signin", async (req, res) => {
   try {
     var rslt = await secModel.addnew(req.body, "delivery");
-    console.log(rslt);
-    res.status(200).json({ msg: "Usuario Creado" });
+    if (rslt == 1) {
+      res.status(201).json({ msg: "Usuario Creado" });
+    } else {
+      res.status(204).json({ msg: "El correo electronico ya esta en uso" });
+    }
   } catch (err) {
     res.status(500).json({ error: "Algo Sucendió mal!!" });
   }
@@ -81,8 +87,11 @@ router.post("/delivery/signin", async (req, res) => {
 router.post("/restaurante/signin", async (req, res) => {
   try {
     var rslt = await secModel.addnew(req.body, "restaurante");
-    console.log(rslt);
-    res.status(200).json({ msg: "Usuario Creado" });
+    if (rslt == 1) {
+      res.status(201).json({ msg: "Usuario Creado" });
+    } else {
+      res.status(204).json({ msg: "El correo electronico ya esta en uso" });
+    }
   } catch (err) {
     res.status(500).json({ error: "Algo Sucendió mal!!" });
   }

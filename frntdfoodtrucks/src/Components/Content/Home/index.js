@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Page from "../../Page";
 import "./home.css";
-import { getMocion, getPrivateMocion } from "./actions";
 export default class extends Component {
   constructor() {
     super();

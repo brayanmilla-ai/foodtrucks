@@ -217,7 +217,7 @@ module.exports = class {
 
   static async addNewItem(id, user) {
     try {
-      let filter = { itemId: id };
+      let filter = { itemId: id, userid: user };
       var cantDb = await carrito.findOne(filter);
       if (!cantDb) {
         const newItemCarrito = {

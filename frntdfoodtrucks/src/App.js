@@ -14,6 +14,7 @@ import "./App.css";
 
 import Home from "./Components/Content/Home";
 import Login from "./Components/Content/LogIn";
+import LogOut from "./Components/Content/LogOut";
 import SignIn from "./Components/Content/SignIn";
 import Delivery from "./Components/Content/Delivery";
 import Cliente from "./Components/Content/Cliente";
@@ -45,16 +46,18 @@ export default class extends Component {
     this.setState({ loadingBackend: true });
   }
   setLogginData(user, jwt) {
+    user = JSON.stringify(user);
+    console.log(user);
     this.setState(
       {
         ...this.state,
-        user: JSON.stringify(user),
+        user: user,
         jwt: jwt,
         isLogged: true,
       },
       () => {
         setLocalStorage("jwt", jwt);
-        setLocalStorage("user", JSON.stringify(user));
+        setLocalStorage("user", user);
         setJWT(jwt);
       }
     );
@@ -96,6 +99,7 @@ export default class extends Component {
         <Switch>
           <NRoute path="/" component={Home} exact auth={auth} />
           <NRoute path="/login" component={Login} exact auth={auth} />
+          <NRoute path="/logout" component={LogOut} exact auth={auth} />
           <NRoute path="/signin" component={SignIn} exact auth={auth} />
           <NRoute path="/delivery" component={Delivery} exact auth={auth} />
           <NRoute path="/cliente" component={Cliente} exact auth={auth} />
